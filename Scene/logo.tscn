@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c54qf260g168x"]
+
+[ext_resource type="PackedScene" uid="uid://do3bur0sw71y8" path="res://player/player.tscn" id="1_f5p77"]
+[ext_resource type="PackedScene" uid="uid://dgym3eac8sbih" path="res://object/bed.tscn" id="2_ippb6"]
+
+[node name="Logo" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_f5p77")]
+position = Vector2(154, 406)
+
+[node name="Bed" parent="." instance=ExtResource("2_ippb6")]
+position = Vector2(642, 230)

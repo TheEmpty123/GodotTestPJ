@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-var speed: int = 500
+@export var max_speed: int = 500
+var speed: int = max_speed
 var can_shoot: bool = true
 var can_grenade: bool = true
 

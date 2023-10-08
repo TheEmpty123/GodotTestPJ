@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 const SPEED = 100
 var direction: Vector2 = Vector2.ZERO
 
@@ -25,3 +24,7 @@ func _process(delta):
 	
 	velocity = direction * SPEED
 	move_and_slide()
+
+
+func hit():
+	print('hit')

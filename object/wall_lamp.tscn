@@ -20,8 +20,9 @@ collision_mask = 11
 shape = SubResource("RectangleShape2D_pgfs4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(505, 144)
 texture = ExtResource("1_rj80o")
+region_enabled = true
+region_rect = Rect2(-0.899971, -1.09995, 841.5, 168.3)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.756863, 0.494118, 1, 1)
@@ -31,7 +32,7 @@ shadow_color = Color(0.0745098, 0.0901961, 0.101961, 0.27451)
 shadow_filter = 1
 shadow_filter_smooth = 1.7
 texture = ExtResource("2_ujcbd")
-texture_scale = 3.0
+texture_scale = 5.0
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_fdfe4")

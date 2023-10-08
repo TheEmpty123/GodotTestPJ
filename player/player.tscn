@@ -22,14 +22,14 @@ polygon = PackedVector2Array(-16, 56, -28, 54, -34, 46, -34, 41, -36, 40, -41, 3
 collision_mask = 31
 script = ExtResource("1_84ibk")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pts67")
+
 [node name="PlayerImg" type="Sprite2D" parent="."]
 position = Vector2(34, 0)
 rotation = 1.5708
 scale = Vector2(0.928344, 0.928344)
 texture = ExtResource("1_n6r3m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_pts67")
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.5

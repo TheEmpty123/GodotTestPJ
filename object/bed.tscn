@@ -11,6 +11,9 @@ size = Vector2(496, 234)
 collision_layer = 4
 collision_mask = 11
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ueeop")
+
 [node name="BedImg" type="Sprite2D" parent="."]
 scale = Vector2(0.777429, 0.632432)
 texture = ExtResource("1_21g4u")
@@ -28,6 +31,3 @@ texture = ExtResource("3_mb5kx")
 position = Vector2(25, 152)
 rotation = 1.5708
 texture = ExtResource("3_mb5kx")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ueeop")

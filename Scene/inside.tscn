@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://dkr0s7rl3ccua"]
+[gd_scene load_steps=28 format=3 uid="uid://dkr0s7rl3ccua"]
 
 [ext_resource type="PackedScene" uid="uid://chge42rd1wyii" path="res://Scene/scene_1.tscn" id="1_edg32"]
 [ext_resource type="Script" path="res://Scene/inside.gd" id="2_das2t"]
 [ext_resource type="Texture2D" uid="uid://vyyyex5mjs2r" path="res://graphics/ground/stones.png" id="2_e8yie"]
 [ext_resource type="TileSet" uid="uid://d0vtc03drjf6b" path="res://Scene/house.tres" id="2_ow3ch"]
 [ext_resource type="PackedScene" uid="uid://dgym3eac8sbih" path="res://object/bed.tscn" id="3_0vnhm"]
+[ext_resource type="PackedScene" uid="uid://b8t5nbbxpuaaq" path="res://Scene/outside.tscn" id="3_7kqdf"]
 [ext_resource type="Texture2D" uid="uid://bx1sjll7xk01t" path="res://graphics/decals/moss/moss_1.png" id="3_be6av"]
 [ext_resource type="Texture2D" uid="uid://cclq5coyhay8l" path="res://graphics/ground/Mesh.png" id="3_f387o"]
 [ext_resource type="PackedScene" uid="uid://bf5ts0dbbppj0" path="res://object/box.tscn" id="4_c2cl0"]
@@ -21,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cdskp7plsokih" path="res://graphics/decals/ceiling_hole1.png" id="13_sxc1b"]
 [ext_resource type="Texture2D" uid="uid://draytolksp3hb" path="res://graphics/decals/blood.png" id="14_2qd2x"]
 [ext_resource type="PackedScene" uid="uid://xjwoufglff3o" path="res://object/steam_vent.tscn" id="14_tkytj"]
+[ext_resource type="Texture2D" uid="uid://cfimx0mf817hn" path="res://graphics/lights/textures/circle.png" id="22_g5dlc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e6501"]
 size = Vector2(1958, 2105.5)
@@ -31,8 +33,12 @@ size = Vector2(1834, 1739)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kqk2"]
 size = Vector2(4177, 4143)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0l22s"]
+size = Vector2(1319.5, 232)
+
 [node name="inside" instance=ExtResource("1_edg32")]
 script = ExtResource("2_das2t")
+outside_scene = ExtResource("3_7kqdf")
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 metadata/_edit_lock_ = true
@@ -298,7 +304,6 @@ scale = Vector2(0.5, 0.5)
 metadata/_edit_lock_ = true
 
 [node name="TileMap2" type="TileMap" parent="Ground" index="38"]
-visible = false
 light_mask = 0
 tile_set = ExtResource("2_ow3ch")
 format = 2
@@ -313,13 +318,27 @@ texture = ExtResource("13_sxc1b")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." index="3"]
-position = Vector2(7386, 4272)
+position = Vector2(11780, -14)
 metadata/_edit_group_ = true
 
+[node name="PointLight2D" type="PointLight2D" parent="Player" index="8"]
+energy = 2.14
+texture = ExtResource("22_g5dlc")
+texture_scale = 3.0
+
 [node name="DirectionalLight2D" parent="." index="4"]
+color = Color(0.341176, 0.341176, 0.341176, 1)
 energy = 1.05
+blend_mode = 1
+
+[node name="Area2D2" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
+position = Vector2(11921, -878)
+shape = SubResource("RectangleShape2D_0l22s")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="player_connected" from="Ground/door" to="." method="_on_door_player_connected"]
 [connection signal="player_connected" from="Ground/door2" to="." method="_on_door_2_player_connected"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

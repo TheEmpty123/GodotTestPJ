@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8t5nbbxpuaaq"]
+[gd_scene load_steps=20 format=3 uid="uid://b8t5nbbxpuaaq"]
 
 [ext_resource type="PackedScene" uid="uid://chge42rd1wyii" path="res://Scene/scene_1.tscn" id="1_0gq8d"]
 [ext_resource type="Texture2D" uid="uid://vyyyex5mjs2r" path="res://graphics/ground/stones.png" id="2_b6kpq"]
@@ -22,6 +22,9 @@
 tile_size = Vector2i(390, 390)
 physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 11
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kuye2"]
+size = Vector2(725, 173.5)
 
 [node name="Outside" instance=ExtResource("1_0gq8d")]
 script = ExtResource("2_wiiic")
@@ -118,9 +121,20 @@ position = Vector2(15, 412)
 rotation = -1.5708
 metadata/_edit_lock_ = true
 
+[node name="Player" parent="." index="9"]
+position = Vector2(-4277, 1805)
+metadata/_edit_group_ = true
+
 [node name="drone" parent="." index="10" instance=ExtResource("17_6u2fo")]
 position = Vector2(350, 346)
+
+[node name="Area2D" type="Area2D" parent="." index="12"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-5432.5, 2864.25)
+shape = SubResource("RectangleShape2D_kuye2")
 
 [connection signal="player_entered" from="House" to="." method="_on_house_player_entered"]
 [connection signal="player_exited" from="House" to="." method="_on_house_player_exited"]
 [connection signal="player_connected" from="Door" to="." method="_on_door_player_connected"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

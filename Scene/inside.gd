@@ -3,14 +3,15 @@ extends LevelParent
 @export var outside_scene: PackedScene
 
 func _on_area_2d_body_entered(_body):
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property($Ground/TileMap2, "layer_0/modulate:a", 0, 0.5)
 	tween.tween_property($Ground/CeilingHole1, "modulate:a", 0,0.5)
+	
 
 
 func _on_area_2d_body_exited(_body):
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property($Ground/TileMap2, "layer_0/modulate:a", 1, 0.5)
 	tween.tween_property($Ground/CeilingHole1, "modulate:a", 1,0.5)

@@ -21,7 +21,8 @@ func _process(_delta):
 	move_and_slide()
 	
 	#Shoot laser
-	if Input.is_action_pressed("primary action") and can_shoot:
+	if Input.is_action_pressed("primary action") and can_shoot and Global.laser_amount > 0:
+		Global.laser_amount -= 1
 		var markers = $Markers.get_children()
 		var selected_marker = markers[randi() % markers.size()]
 		var pos = selected_marker.global_position
@@ -32,7 +33,8 @@ func _process(_delta):
 		$GPUParticles2D.process_material.angle_max = 270 -  rad_to_deg(dir.angle())
 		laser_input.emit(pos, dir)
 	
-	if Input.is_action_pressed("secondary action") and can_grenade:
+	if Input.is_action_pressed("secondary action") and can_grenade and Global.grenade_amount > 0:
+		Global.grenade_amount -= 1
 		var markers = $Markers.get_children()
 		var selected_marker = markers[randi() % markers.size()]
 		var pos = selected_marker.global_position

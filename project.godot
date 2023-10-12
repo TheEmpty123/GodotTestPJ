@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Test"
-run/main_scene="res://Scene/inside.tscn"
+run/main_scene="res://Scene/outside.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://Global/global.gd"
+TransitionLayer="*res://Global/transition_layer.tscn"
 
 [display]
 

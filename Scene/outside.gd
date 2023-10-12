@@ -21,5 +21,4 @@ func _on_door_player_connected(_body):
 func _on_area_2d_body_entered(_body):
 	var tween = create_tween()
 	tween.tween_property($Player, "speed", 0, 0.5)
-	get_tree().change_scene_to_file("res://Scene/inside.tscn")
-	
+	TransitionLayer.change_scene("res://Scene/inside.tscn")

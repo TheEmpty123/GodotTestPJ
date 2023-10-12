@@ -304,6 +304,7 @@ scale = Vector2(0.5, 0.5)
 metadata/_edit_lock_ = true
 
 [node name="TileMap2" type="TileMap" parent="Ground" index="38"]
+visible = false
 light_mask = 0
 tile_set = ExtResource("2_ow3ch")
 format = 2
@@ -317,8 +318,10 @@ scale = Vector2(2.74367, 2.84892)
 texture = ExtResource("13_sxc1b")
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." index="3"]
-position = Vector2(11780, -14)
+[node name="Items" type="Node2D" parent="." index="2"]
+
+[node name="Player" parent="." index="4"]
+position = Vector2(14645, 2344)
 metadata/_edit_group_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="Player" index="8"]
@@ -326,16 +329,19 @@ energy = 2.14
 texture = ExtResource("22_g5dlc")
 texture_scale = 3.0
 
-[node name="DirectionalLight2D" parent="." index="4"]
+[node name="DirectionalLight2D" parent="." index="5"]
 color = Color(0.341176, 0.341176, 0.341176, 1)
 energy = 1.05
 blend_mode = 1
 
-[node name="Area2D2" type="Area2D" parent="." index="5"]
+[node name="Area2D2" type="Area2D" parent="." index="6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
 position = Vector2(11921, -878)
 shape = SubResource("RectangleShape2D_0l22s")
+
+[node name="Item" parent="." index="8"]
+position = Vector2(11634, -424)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

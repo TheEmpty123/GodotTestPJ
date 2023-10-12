@@ -2,6 +2,12 @@ extends LevelParent
 
 @export var outside_scene: PackedScene
 
+var item_scene: PackedScene = preload("res://object/item.tscn")
+
+func _ready():
+	for container in get_tree().get_nodes_in_group("Container"):
+		container.connect("open", _on_container_opened)
+
 func _on_area_2d_body_entered(_body):
 	var tween = create_tween()
 	tween.set_parallel(true)
@@ -9,6 +15,11 @@ func _on_area_2d_body_entered(_body):
 	tween.tween_property($Ground/CeilingHole1, "modulate:a", 0,0.5)
 	
 
+func _on_container_opened(pos, dir):
+	var item = item_scene.instantiate()
+	item.position = pos
+	item.direction = dir
+	$Items.call_deferred('add_child', item)
 
 func _on_area_2d_body_exited(_body):
 	var tween = create_tween()
@@ -32,5 +43,6 @@ func _on_door_2_player_connected(_body):
 func _on_area_2d_2_body_entered(_body):
 	var tween = create_tween()
 	tween.tween_property($Player, "speed", 0, 0.5)
-	get_tree().change_scene_to_packed(outside_scene)
+	TransitionLayer.change_scene("res://Scene/outside.tscn")
+	
 

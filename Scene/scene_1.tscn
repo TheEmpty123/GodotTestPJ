@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://chge42rd1wyii"]
+[gd_scene load_steps=5 format=3 uid="uid://chge42rd1wyii"]
 
 [ext_resource type="Script" path="res://Scene/scene_1.gd" id="1_1x10g"]
 [ext_resource type="PackedScene" uid="uid://ejp0tpa1xlr5" path="res://user_interface/ui.tscn" id="3_s6eq0"]
+[ext_resource type="PackedScene" uid="uid://davl40cgeuh8w" path="res://object/item.tscn" id="4_3i1ty"]
 [ext_resource type="PackedScene" uid="uid://do3bur0sw71y8" path="res://player/player.tscn" id="6_wbbjg"]
 
 [node name="Scene1" type="Node2D"]
@@ -23,6 +24,8 @@ position_smoothing_enabled = true
 color = Color(0.572549, 0.572549, 0.572549, 1)
 
 [node name="UI" parent="." instance=ExtResource("3_s6eq0")]
+
+[node name="Item" parent="." instance=ExtResource("4_3i1ty")]
 
 [connection signal="grenade_input" from="Player" to="." method="_on_player_grenade_input"]
 [connection signal="laser_input" from="Player" to="." method="_on_player_laser_input"]
